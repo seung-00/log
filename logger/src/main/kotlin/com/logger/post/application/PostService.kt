@@ -3,21 +3,21 @@ package com.logger.post.application
 import com.logger.post.domain.Post
 import com.logger.post.domain.PostPreview
 import com.logger.post.domain.PostPreviews
-import org.springframework.beans.factory.annotation.Value
+import com.logger.post.infrastructure.config.BlogPostProperties
 import org.springframework.stereotype.Service
 
 @Service
 class PostService(
-  @Value("\${blog.post.path}") private val postPath: String
+  private val postProperties: BlogPostProperties
 ) {
   fun getPost(name: String): Post {
-    val post = Post.of(postPath, name)
+    val post = Post.of(postProperties.path, name)
 
     return post
   }
 
   fun getPostPreviews(): List<PostPreview> {
-    val postPreviews = PostPreviews.of(postPath)
+    val postPreviews = PostPreviews.of(postProperties.path)
 
     return postPreviews.toList()
   }
