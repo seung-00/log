@@ -1,17 +1,19 @@
 import React from "react";
-import PostPreviews from "../../component/post/preview/PostPreviews";
+import PostDetail from "../../../component/post/detail";
+import {useParams} from "react-router-dom";
 
-export default function PostListPage() {
+export default function PostDetailPage() {
+  const {id} = useParams()
 
   return (
       <div className={"page_container"}>
         <header>
           <h1>
-            Posts
+            Post Detail
           </h1>
         </header>
         <main className={"page_main"}>
-          <PostPreviews/>
+          {id && <PostDetail id={id}/>}
         </main>
         <footer className={"page_footer"}>
           <p>seung-00</p>

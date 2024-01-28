@@ -1,17 +1,33 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import PostsPage from "./page/post";
-import PostPreviewsPage from "./page/post/previews";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import ErrorPage from "./page/common/error";
+import PostListPage from "./page/post";
+import PostDetailPage from "./page/post/detail";
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+    errorElement: <ErrorPage/>,
+  },
+  {
+    path: "/posts",
+    element: <PostListPage/>,
+    errorElement: <ErrorPage/>,
+  },
+  {
+    path: "/posts/:id",
+    element: <PostDetailPage />,
+    errorElement: <ErrorPage/>,
+  },
+]);
+
 
 function App() {
 
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<PostsPage/>}/>
-          <Route path="/test" element={<PostPreviewsPage/>}/>
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router}/>
   );
 }
 
