@@ -1,10 +1,7 @@
-package com.logger.post.presentation
+package com.logger.presentation.post
 
-import com.logger.common.presentation.ApiResponse
-import com.logger.post.application.PostService
-import com.logger.post.presentation.dto.PostPreviewResponse
-import com.logger.post.presentation.dto.PostResponse
-import com.logger.post.presentation.dto.toResponse
+import com.logger.application.post.PostService
+import com.logger.presentation.common.ApiResponse
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -12,22 +9,22 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @CrossOrigin(origins = arrayOf("*"))
-class PostController(
-  private val postService: PostService
+internal class PostController(
+  private val postService: PostService,
 ) {
   @GetMapping("/api/v1/posts/{id}")
   fun getPost(
-    @PathVariable id: String
+    @PathVariable id: String,
   ): ApiResponse<PostResponse> {
     val result = postService.getPost(id)
 
-    return ApiResponse.ok(result.toResponse())
+    return ApiResponse.ok(PostResponse.from(result))
   }
 
   @GetMapping("/api/v1/posts/previews")
   fun getPostPreviews(): ApiResponse<List<PostPreviewResponse>> {
     val result = postService.getPostPreviews()
 
-    return ApiResponse.ok(result.map { it.toResponse() })
+    return ApiResponse.ok(result.map { PostPreviewResponse.from(it) })
   }
 }

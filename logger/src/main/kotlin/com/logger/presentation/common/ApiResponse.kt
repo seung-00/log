@@ -1,4 +1,4 @@
-package com.logger.common.presentation
+package com.logger.presentation.common
 
 data class ApiResponse<T>(
   val code: String,
