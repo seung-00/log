@@ -3,6 +3,7 @@ import Markdown from "react-markdown";
 import axios from "axios";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
 
 interface PostResponse {
   id: number
@@ -25,6 +26,23 @@ type Props = {
   id: string;
 }
 
+const REACT_IMAGE_BASE_URL = "http://localhost:8080/api/v1/images/"
+
+const getPath = (uri: string) => {
+  const pattern = /[^/]+\.png/g;
+
+  return pattern.exec(uri)?.[0]
+}
+
+const transformImageUri = (uri: string) => {
+  if (!uri.startsWith("http") && uri.includes('.png')) {
+    return `${REACT_IMAGE_BASE_URL}${getPath(uri)}`
+  }
+
+  return uri
+}
+
+
 export default function PostDetail({id}: Props) {
   const [post, setPost] = useState<PostResponse>();
 
@@ -43,7 +61,9 @@ export default function PostDetail({id}: Props) {
       <div className={"post_container"}>
         <Markdown
             rehypePlugins={[rehypeHighlight]}
-            remarkPlugins={[remarkGfm]}>
+            remarkPlugins={[remarkGfm]}
+            urlTransform={transformImageUri}
+        >
           {post.content}
         </Markdown>
       </div>
