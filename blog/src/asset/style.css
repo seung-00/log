@@ -24,3 +24,8 @@ td,
 th {
   border: 0.1px solid #555;
 }
+
+iframe
+{
+  display: none;
+}
