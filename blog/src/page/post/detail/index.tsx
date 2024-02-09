@@ -7,16 +7,14 @@ export default function PostDetailPage() {
 
   return (
       <div className={"page_container"}>
-        <header>
-          <h1>
-            Post Detail
-          </h1>
+        <header className={"header_container"}>
+          Post Detail
         </header>
         <main className={"page_main"}>
           {id && <PostDetail id={id}/>}
         </main>
         <footer className={"page_footer"}>
-          <p>seung-00</p>
+          <p>seung-00@naver.com</p>
         </footer>
       </div>
   )

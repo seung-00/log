@@ -58,7 +58,7 @@ export default function PostDetail({id}: Props) {
   }
 
   return (
-      <div className={"post_container"}>
+      <div className={"detail_container"}>
         <Markdown
             rehypePlugins={[rehypeHighlight]}
             remarkPlugins={[remarkGfm]}

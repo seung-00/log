@@ -33,18 +33,23 @@ export default function PostPreviews() {
   }
 
   return (
-      <div>
-        {previews.map((post) => {
-          return (
-              <Link key={post.id} to={`/posts/${post.id}`}>
-                <p>
-                  {post.title}
-                  -
-                  {post.updatedAt}
-                </p>
-              </Link>
-          )
-        })}
+      <div className={"preview_container"}>
+        <ul className={"preview_list"}>
+          {previews.map((post) => {
+            return (
+                <li key={post.id} className={"preview_post"}>
+                  <p>
+                    {post.updatedAt}
+                  </p>
+                  <Link to={`/posts/${post.id}`}>
+                    <p className={"post_title"}>
+                      {post.title}
+                    </p>
+                  </Link>
+                </li>
+            )
+          })}
+        </ul>
       </div>
   )
 }

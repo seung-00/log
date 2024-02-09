@@ -1,0 +1,170 @@
+// variable
+$point-color: #606688;
+
+$border-color: transparentize($point-color, 0.5);
+$border-height: 1px;
+
+@mixin border-start {
+  border-top: $border-height solid $border-color;
+  border-bottom: $border-height solid $border-color;
+}
+
+@mixin border-else {
+  border-bottom: $border-height solid $border-color;
+}
+
+// common
+ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+li {
+  list-style-type: none;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+table,
+tr,
+td,
+th {
+  border: 0.1px solid $border-color;
+}
+
+iframe {
+  display: none;
+}
+
+/**
+ header
+ */
+.header_container {
+  padding: 20px;
+  font-size: 3em;
+  font-weight: 600;
+}
+
+/*page*/
+@media (min-width: 768px) { // pc
+  .page_container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 25px;
+  }
+
+  .page_main {
+    padding: 20px 20px;
+    max-width: 1024px;
+    margin: 0 auto;
+    min-height: 80vh;
+  }
+}
+
+@media (max-width: 768px) { // mobile
+  .page_container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+  }
+
+  .page_main {
+    margin: 0 auto;
+    min-height: 80vh;
+  }
+}
+
+
+.page_footer {
+  margin-top: auto;
+}
+
+/*previews*/
+.preview_container {
+  display: flex;
+}
+
+@media (min-width: 768px) { // pc
+  .preview_container {
+    padding: 20px 0;
+    min-width: 1000px;
+  }
+
+  .preview_list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .preview_post {
+    padding: 28px 0px;
+  }
+
+  .preview_post:first-child { // 처음
+    @include border-start;
+  }
+
+  .preview_post + .preview_post { // 중간
+    @include border-else;
+  }
+
+  .preview_post:last-child { // 끝
+    @include border-else;
+  }
+
+  .post_title {
+    font-size: 1.5em;
+    font-weight: 500;
+    padding: 5px 2.5px;
+  }
+}
+
+@media (max-width: 768px) { // mobile
+  .preview_container {
+    display: flex;
+    flex: 1;
+  }
+
+  .preview_list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .preview_post {
+    flex: 1;
+    padding: 35px 0;
+  }
+
+  .preview_post:first-child { // 처음
+    @include border-start;
+  }
+
+  .preview_post + .preview_post { // 중간
+    @include border-else;
+  }
+
+  .preview_post:last-child { // 끝
+    @include border-else;
+  }
+
+  .post_title {
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+}
+
+/*detail*/
+.detail_container {
+  //min-width: 800px;
+}
+
