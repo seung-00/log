@@ -2,10 +2,11 @@
 
 // variable
 $point-color1: #606688;
-$point-color2: #434fbe;
+$point-color2: #3f499d;
+$point-color3: transparentize($point-color1, 0.1);
 
 $border-color: transparentize($point-color1, 0.5);
-$border-height: 1px;
+$border-height: 0.8px;
 
 @mixin border-top-bottom {
   border-top: $border-height solid $border-color;
@@ -64,8 +65,9 @@ iframe {
   .page_container {
     display: flex;
     flex-direction: column;
-    padding: 25px 45px;
-    max-width: 1024px;
+    //padding: 25px 400px;
+    min-width: 768px;
+    max-width: 900px;
     margin: 0 auto;
     min-height: 80vh;
   }
@@ -83,12 +85,15 @@ iframe {
 
 
 .page_footer {
+  display: flex;
+  justify-content: center;
   margin-top: auto;
 }
 
 /*previews*/
 .preview_header {
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 50px;
   font-size: 3em;
   font-weight: 600;
 }
@@ -99,7 +104,6 @@ iframe {
 
 @media (min-width: 768px) { // pc
   .preview_main {
-    padding: 20px 0;
     min-width: 1000px;
   }
 
@@ -111,7 +115,15 @@ iframe {
   }
 
   .preview_post {
-    padding: 28px 0px;
+    padding-top: 35px;
+    padding-bottom: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    p {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .preview_post:first-child { // 처음
@@ -127,8 +139,9 @@ iframe {
   }
 
   .post_title {
+    margin: 0;
     font-size: 1.5em;
-    padding: 5px 2.5px;
+    padding: 2px 2.5px;
     color: $point-color2;
     @include font-style-bold;
   }
@@ -165,10 +178,12 @@ iframe {
   }
 
   .post_title {
-    font-size: 1.1em;
+    margin: 0;
+    font-size: 1.4em;
     font-weight: 600;
+    color: $point-color2;
+    @include font-style-bold;
   }
-
 }
 
 /*detail*/
@@ -184,6 +199,13 @@ iframe {
   margin: 0;
   white-space: nowrap;
   @include font-style-bold;
+}
+
+.preview_post_updated {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 5px;
+  color: $point-color3;
 }
 
 .detail_header:hover {
@@ -204,6 +226,7 @@ iframe {
   font-size: 1em;
   font-weight: 500;
   margin: 5px;
+  color: $point-color3;
 }
 
 .detail_post_header {

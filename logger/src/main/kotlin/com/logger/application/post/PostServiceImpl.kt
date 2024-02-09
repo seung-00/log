@@ -20,6 +20,7 @@ internal class PostServiceImpl(
   }
 
   override fun getPostPreviews(): List<PostPreview> {
+    println("postProperties.path: ${postProperties.path}")
     val markdowns = Markdowns.of(postProperties.path)
     val postPreviews = PostPreviews.from(markdowns)
 

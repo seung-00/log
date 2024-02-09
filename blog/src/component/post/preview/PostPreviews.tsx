@@ -38,7 +38,7 @@ export default function PostPreviews() {
           {previews.map((post) => {
             return (
                 <li key={post.id} className={"preview_post"}>
-                  <p>
+                  <p className={"preview_post_updated"}>
                     {post.updatedAt}
                   </p>
                   <Link to={`/posts/${post.id}`}>

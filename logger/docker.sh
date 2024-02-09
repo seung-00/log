@@ -13,7 +13,7 @@ PORT_MAPPING="-p 80:8080"
 
 docker build \
   --build-arg PHASE=PROD \
-  --build-arg ENV_FILES_PATH=/Users/seungyoungoh/Library/Mobile\ Documents/com~apple~CloudDocs/home/workspace/log/public \
+  --build-arg ENV_FILES_PATH=/Users/seungyoungoh/Library/Mobile\ Documents/c/home/workspace/log/public \
   --platform linux/amd64 \
   -t app .
 
