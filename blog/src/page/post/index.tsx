@@ -6,7 +6,7 @@ export default function PostListPage() {
   return (
       <div className={"page_container"}>
         <header className={"preview_header"}>
-          Posts
+          Holden's Directory
         </header>
         <PostPreviews/>
         <footer className={"page_footer"}>

@@ -1,18 +1,29 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 // variable
-$point-color: #606688;
+$point-color1: #606688;
+$point-color2: #434fbe;
 
-$border-color: transparentize($point-color, 0.5);
+$border-color: transparentize($point-color1, 0.5);
 $border-height: 1px;
 
-@mixin border-start {
+@mixin border-top-bottom {
   border-top: $border-height solid $border-color;
   border-bottom: $border-height solid $border-color;
 }
 
-@mixin border-else {
+@mixin border-bottom {
   border-bottom: $border-height solid $border-color;
+}
+
+@mixin font-style {
+  font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif;
+  color: #232129;
+}
+
+@mixin font-style-bold {
+  font-family: 'Pretendard-ExtraBold', -apple-system, 'Noto Sans KR', sans-serif;
+  font-weight: 800;
 }
 
 // common
@@ -33,7 +44,7 @@ a {
 }
 
 body {
-  font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif;
+  @include font-style;
 }
 
 table,
@@ -104,21 +115,22 @@ iframe {
   }
 
   .preview_post:first-child { // 처음
-    @include border-start;
+    @include border-top-bottom;
   }
 
   .preview_post + .preview_post { // 중간
-    @include border-else;
+    @include border-bottom;
   }
 
   .preview_post:last-child { // 끝
-    @include border-else;
+    @include border-bottom;
   }
 
   .post_title {
     font-size: 1.5em;
-    font-weight: 500;
     padding: 5px 2.5px;
+    color: $point-color2;
+    @include font-style-bold;
   }
 }
 
@@ -141,15 +153,15 @@ iframe {
   }
 
   .preview_post:first-child { // 처음
-    @include border-start;
+    @include border-top-bottom;
   }
 
   .preview_post + .preview_post { // 중간
-    @include border-else;
+    @include border-bottom;
   }
 
   .preview_post:last-child { // 끝
-    @include border-else;
+    @include border-bottom;
   }
 
   .post_title {
@@ -160,13 +172,45 @@ iframe {
 }
 
 /*detail*/
+.detail_header_container {
+  display: flex;
+}
+
 .detail_header {
-  padding: 20px 0;
-  font-size: 1.8em;
+  padding-top: 10px;
+  padding-bottom: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+  @include font-style-bold;
+}
+
+.detail_header:hover {
+  color: $point-color2;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.detail_post_header_container {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding-top: 50px;
+  padding-bottom: 25px;
+}
+
+.detail_post_date {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 5px;
+}
+
+.detail_post_header {
+  margin-top: 0;
+  padding-bottom: 18px;
+  font-size: 2.4em;
   font-weight: 600;
+  @include font-style-bold;
+  @include border-bottom;
 }
-
-.detail_main {
-  //min-width: 800px;
-}
-

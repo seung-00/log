@@ -57,6 +57,12 @@ export default function PostDetail({id}: Props) {
 
   return (
       <main className={"detail_main"}>
+        <div className={"detail_post_header_container"}>
+          <p className={"detail_post_date"}>
+            {post.updatedAt}
+          </p>
+          <h1 className={"detail_post_header"}>{post.title}</h1>
+        </div>
         <Markdown
             rehypePlugins={[rehypeHighlight]}
             remarkPlugins={[remarkGfm]}

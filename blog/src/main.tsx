@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBrowserRouter, RouterProvider, useNavigate} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import ErrorPage from "./page/common/error";
 import PostListPage from "./page/post";
 import PostDetailPage from "./page/post/detail";
