@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 // variable
 $point-color: #606688;
 
@@ -30,6 +32,9 @@ a {
   text-decoration: none;
 }
 
+body {
+  font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif;
+}
 
 table,
 tr,
