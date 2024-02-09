@@ -1,13 +1,14 @@
 import React from "react";
-import PostDetail from "../../../component/post/detail";
 import {useParams} from "react-router-dom";
+import cn from 'classnames';
+import PostDetail from "../../../component/post/detail";
 
 export default function PostDetailPage() {
   const {id} = useParams()
 
   return (
       <div className={"page_container"}>
-        <header className={"header_container"}>
+        <header className={"detail_header"}>
           Post Detail
         </header>
         <main className={"page_main"}>

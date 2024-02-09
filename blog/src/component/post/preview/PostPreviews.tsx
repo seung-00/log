@@ -33,7 +33,7 @@ export default function PostPreviews() {
   }
 
   return (
-      <div className={"preview_container"}>
+      <main className={"preview_main"}>
         <ul className={"preview_list"}>
           {previews.map((post) => {
             return (
@@ -50,6 +50,6 @@ export default function PostPreviews() {
             )
           })}
         </ul>
-      </div>
+      </main>
   )
 }

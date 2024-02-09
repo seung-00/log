@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Markdown from "react-markdown";
-import axios from "axios";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import rehypeRaw from "rehype-raw";
 import {axiosInstance} from "../../../common/axios";
 import {IMAGE_BASE_URL} from "../../../common/constant";
 
@@ -58,7 +56,7 @@ export default function PostDetail({id}: Props) {
   }
 
   return (
-      <div className={"detail_container"}>
+      <main className={"detail_main"}>
         <Markdown
             rehypePlugins={[rehypeHighlight]}
             remarkPlugins={[remarkGfm]}
@@ -66,6 +64,6 @@ export default function PostDetail({id}: Props) {
         >
           {post.content}
         </Markdown>
-      </div>
+      </main>
   )
 }

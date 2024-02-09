@@ -5,12 +5,10 @@ export default function PostListPage() {
 
   return (
       <div className={"page_container"}>
-        <header className={"header_container"}>
+        <header className={"preview_header"}>
           Posts
         </header>
-        <main className={"page_main"}>
-          <PostPreviews/>
-        </main>
+        <PostPreviews/>
         <footer className={"page_footer"}>
           <p>seung-00@naver.com</p>
         </footer>
