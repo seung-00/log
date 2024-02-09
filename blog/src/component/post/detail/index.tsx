@@ -4,6 +4,8 @@ import axios from "axios";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
+import {axiosInstance} from "../../../common/axios";
+import {IMAGE_BASE_URL} from "../../../common/constant";
 
 interface PostResponse {
   id: number
@@ -17,7 +19,7 @@ interface ApiResponse<T> {
 }
 
 const fetchPost = async (id: string) => {
-  const res = await axios.get<ApiResponse<PostResponse>>(`http://localhost:8080/api/v1/posts/${id}`)
+  const res = await axiosInstance.get<ApiResponse<PostResponse>>(`/v1/posts/${id}`)
 
   return res.data
 }
@@ -25,8 +27,6 @@ const fetchPost = async (id: string) => {
 type Props = {
   id: string;
 }
-
-const REACT_IMAGE_BASE_URL = "http://localhost:8080/api/v1/images/"
 
 const getPath = (uri: string) => {
   const pattern = /[^/]+\.png/g;
@@ -36,7 +36,7 @@ const getPath = (uri: string) => {
 
 const transformImageUri = (uri: string) => {
   if (!uri.startsWith("http") && uri.includes('.png')) {
-    return `${REACT_IMAGE_BASE_URL}${getPath(uri)}`
+    return `${IMAGE_BASE_URL}${getPath(uri)}`
   }
 
   return uri

@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {axiosInstance} from "../../../common/axios";
 
 interface PostPreviewResponse {
   id: number
@@ -13,7 +13,7 @@ interface ApiResponse<T> {
 }
 
 const fetchPostPreviews = async () => {
-  const res = await axios.get<ApiResponse<PostPreviewResponse[]>>("http://localhost:8080/api/v1/posts/previews")
+  const res = await axiosInstance.get<ApiResponse<PostPreviewResponse[]>>("/v1/posts/previews")
 
   return res.data
 }
