@@ -27,9 +27,11 @@ type Props = {
 }
 
 const getPath = (uri: string) => {
-  const pattern = /[^/]+\.png/g;
+  const pattern = /images\/(.+\.png)/;
+  const match = pattern.exec(uri);
 
-  return pattern.exec(uri)?.[0]
+  return match ? `${match[1]}` : null;
+
 }
 
 const transformImageUri = (uri: string) => {
@@ -67,7 +69,7 @@ export default function PostDetail({id}: Props) {
             rehypePlugins={[rehypeHighlight]}
             remarkPlugins={[remarkGfm]}
             urlTransform={transformImageUri}
-        >
+            components={{img: ({node, ...props}) => <img style={{maxWidth: '70%'}}{...props} alt=""/>}}>
           {post.content}
         </Markdown>
       </main>

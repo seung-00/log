@@ -28,17 +28,6 @@ $border-height: 0.8px;
 }
 
 // common
-ul {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-li {
-  list-style-type: none;
-  list-style: none;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -100,6 +89,16 @@ iframe {
 
 .preview_main {
   display: flex;
+  ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  li {
+    list-style-type: none;
+    list-style: none;
+  }
 }
 
 @media (min-width: 768px) { // pc
