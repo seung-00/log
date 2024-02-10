@@ -58,7 +58,7 @@ iframe {
     min-width: 768px;
     max-width: 900px;
     margin: 0 auto;
-    min-height: 80vh;
+    min-height: 100vh;
   }
 }
 
@@ -68,7 +68,7 @@ iframe {
     flex-direction: column;
     padding: 5px 10px;
     margin: 0 auto;
-    min-height: 80vh;
+    min-height: 100vh;
   }
 }
 
@@ -160,8 +160,7 @@ iframe {
   }
 
   .preview_post {
-    flex: 1;
-    padding: 35px 0;
+    padding: 30px 0;
   }
 
   .preview_post:first-child { // 처음
