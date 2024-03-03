@@ -5,7 +5,7 @@ export default function PostListPage() {
 
   return (
       <div className={"page_container"}>
-        <header className={"preview_header"}>
+        <header className={"preview_header font-mono"}>
           Holden's Directory
         </header>
         <PostPreviews/>

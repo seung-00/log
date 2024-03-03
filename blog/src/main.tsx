@@ -8,7 +8,7 @@ import PostDetailPage from "./page/post/detail";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <h1 className={"underline"}>Hello world!</h1>,
     errorElement: <ErrorPage/>,
   },
   {

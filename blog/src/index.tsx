@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Main from './main';
 import './asset/style.scss';
-import './asset/github.css';
+import './asset/input.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -2,11 +2,15 @@
 
 // variable
 $point-color1: #606688;
-$point-color2: #3f499d;
+$point-color2: #404682;
 $point-color3: transparentize($point-color1, 0.1);
 
 $border-color: transparentize($point-color1, 0.5);
 $border-height: 0.8px;
+
+code {
+  font-size: 0.9em !important;
+}
 
 @mixin border-top-bottom {
   border-top: $border-height solid $border-color;
@@ -54,9 +58,8 @@ iframe {
   .page_container {
     display: flex;
     flex-direction: column;
-    //padding: 25px 400px;
     min-width: 768px;
-    max-width: 900px;
+    max-width: 1024px;
     margin: 0 auto;
     min-height: 100vh;
   }
@@ -89,6 +92,7 @@ iframe {
 
 .preview_main {
   display: flex;
+
   ul {
     margin: 0;
     padding: 0;
@@ -119,6 +123,7 @@ iframe {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
     p {
       margin: 0;
       padding: 0;
@@ -235,3 +240,4 @@ iframe {
   @include font-style-bold;
   @include border-bottom;
 }
+

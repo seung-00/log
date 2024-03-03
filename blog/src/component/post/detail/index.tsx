@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
 import {axiosInstance} from "../../../common/axios";
 import {IMAGE_BASE_URL} from "../../../common/constant";
+import CodeBlock from "../markdown/CodeBlock";
+import Pre from "../markdown/Pre";
+import Img from "../markdown/Img";
 
 interface PostResponse {
   id: number
@@ -34,6 +36,7 @@ const getPath = (uri: string) => {
 
 }
 
+
 const transformImageUri = (uri: string) => {
   if (!uri.startsWith("http") && uri.includes('.png')) {
     return `${IMAGE_BASE_URL}${getPath(uri)}`
@@ -63,15 +66,29 @@ export default function PostDetail({id}: Props) {
           <p className={"detail_post_date"}>
             {post.updatedAt}
           </p>
-          <h1 className={"detail_post_header"}>{post.title}</h1>
+          <h1 className={"font-mono mt-3 lg:mb-16 text-5xl font-extrabold"}>
+            <span className={"lg:bg-gradient-to-r from-my-400 via-my-200 to-my-100 bg-[length:100%_14px] bg-no-repeat bg-bottom pb-5"}>{post.title}</span>
+          </h1>
         </div>
-        <Markdown
-            rehypePlugins={[rehypeHighlight]}
-            remarkPlugins={[remarkGfm]}
-            urlTransform={transformImageUri}
-            components={{img: ({node, ...props}) => <img style={{maxWidth: '70%'}}{...props} alt=""/>}}>
-          {post.content}
-        </Markdown>
+        <article className="
+        prose prose-lg
+        max-w-none
+        prose-h1:border-l-8
+        prose-h1:border-my-200
+        prose-h1:pl-2
+        pt-5 pl-6
+        prose-a:text-my-200 hover:prose-a:text-my-100">
+          <Markdown
+              remarkPlugins={[remarkGfm]}
+              urlTransform={transformImageUri}
+              components={{
+                img: Img,
+                code: CodeBlock,
+                pre: Pre
+              }}>
+            {post.content}
+          </Markdown>
+        </article>
       </main>
   )
 }
