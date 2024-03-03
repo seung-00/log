@@ -76,7 +76,7 @@ export default function PostDetail({id}: Props) {
         prose-h1:border-l-8
         prose-h1:border-my-200
         prose-h1:pl-2
-        pt-5 pl-6
+        pt-4 px-3
         prose-a:text-my-200 hover:prose-a:text-my-100">
           <Markdown
               remarkPlugins={[remarkGfm]}
