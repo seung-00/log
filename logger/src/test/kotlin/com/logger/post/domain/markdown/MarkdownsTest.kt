@@ -1,14 +1,11 @@
 package com.logger.post.domain.markdown
 
-import com.logger.domain.markdown.Markdowns
+import com.logger.model.markdown.Markdowns
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.context.annotation.PropertySource
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.ContextConfiguration
-import org.springframework.test.context.TestPropertySource
 
 
 @SpringBootTest

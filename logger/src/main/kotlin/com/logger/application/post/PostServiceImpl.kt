@@ -1,28 +1,22 @@
 package com.logger.application.post
 
-import com.logger.domain.markdown.Markdown
-import com.logger.domain.markdown.Markdowns
-import com.logger.domain.post.Post
-import com.logger.domain.post.PostPreview
-import com.logger.domain.post.PostPreviews
-import com.logger.infrastructure.config.FilesProperties
+import com.logger.application.markdown.MarkdownRepository
+import com.logger.model.post.Post
+import com.logger.model.post.PostPreviews
 import org.springframework.stereotype.Service
 
 @Service
 internal class PostServiceImpl(
-  private val postProperties: FilesProperties
+  private val markdownRepository: MarkdownRepository
 ): PostService {
   override fun getPost(name: String): Post {
-    val markdown = Markdown.of(postProperties.path, name)
-    val post = Post.from(markdown)
-
-    return post
+    val markdown = markdownRepository.retrieveMarkdown(name)
+    return Post.from(markdown)
   }
 
-  override fun getPostPreviews(): List<PostPreview> {
-    val markdowns = Markdowns.of(postProperties.path)
-    val postPreviews = PostPreviews.from(markdowns)
+  override fun getPostPreviews(): PostPreviews {
+    val markdowns = markdownRepository.retrieveAllMarkdowns()
 
-    return postPreviews.toList()
+    return PostPreviews.from(markdowns)
   }
 }

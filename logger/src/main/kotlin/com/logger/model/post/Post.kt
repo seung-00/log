@@ -1,6 +1,6 @@
-package com.logger.domain.post
+package com.logger.model.post
 
-import com.logger.domain.markdown.Markdown
+import com.logger.model.markdown.Markdown
 import java.time.ZonedDateTime
 
 class Post(

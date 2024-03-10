@@ -25,6 +25,10 @@ internal class PostController(
   fun getPostPreviews(): ApiResponse<List<PostPreviewResponse>> {
     val result = postService.getPostPreviews()
 
-    return ApiResponse.ok(result.map { PostPreviewResponse.from(it) })
+    return ApiResponse.ok(
+      result.toList().map {
+        PostPreviewResponse.from(it)
+      }
+    )
   }
 }

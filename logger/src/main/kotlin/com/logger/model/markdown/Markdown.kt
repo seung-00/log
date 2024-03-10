@@ -1,4 +1,4 @@
-package com.logger.domain.markdown
+package com.logger.model.markdown
 
 import java.io.File
 import java.time.Instant

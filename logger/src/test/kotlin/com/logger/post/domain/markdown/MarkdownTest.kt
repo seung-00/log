@@ -1,6 +1,6 @@
 package com.logger.post.domain.markdown
 
-import com.logger.domain.markdown.Markdown
+import com.logger.model.markdown.Markdown
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
