@@ -8,8 +8,13 @@ $point-color3: transparentize($point-color1, 0.1);
 $border-color: transparentize($point-color1, 0.5);
 $border-height: 0.8px;
 
+//common
 code {
   font-size: 0.9em !important;
+}
+
+table {
+  text-align: center !important;
 }
 
 @mixin border-top-bottom {

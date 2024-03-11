@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMermaid from 'remark-mermaidjs'
+
 import {axiosInstance} from "../../../common/axios";
 import {IMAGE_BASE_URL} from "../../../common/constant";
 import CodeBlock from "../markdown/CodeBlock";
@@ -79,7 +81,9 @@ export default function PostDetail({id}: Props) {
         pt-4 px-3
         prose-a:text-my-200 hover:prose-a:text-my-100">
           <Markdown
-              remarkPlugins={[remarkGfm]}
+              // @ts-ignore
+              // https://github.com/remarkjs/react-markdown/issues/680
+              remarkPlugins={[remarkGfm, remarkMermaid]}
               urlTransform={transformImageUri}
               components={{
                 img: Img,
