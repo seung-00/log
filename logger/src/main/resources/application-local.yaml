@@ -2,9 +2,3 @@ cloud:
   files:
     path:
       /Users/seungyoungoh/Library/Mobile Documents/com~apple~CloudDocs/home/workspace/log/public
-server:
-  ssl:
-    enabled: true
-    key-store: classpath: keystore.p12
-    key-store-type: PKCS12
-    key-storee-password: logger#01
