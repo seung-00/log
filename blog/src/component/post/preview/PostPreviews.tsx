@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {axiosInstance} from "../../../common/axios";
+import classNames from "classnames";
 
 interface PostPreviewResponse {
   id: number
@@ -18,6 +19,18 @@ const fetchPostPreviews = async () => {
   return res.data
 }
 
+const formatDateWithIntl = (dateString: string) => {
+  const date = new Date(dateString);
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  } as const;
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  return formatter.format(date);
+}
+
+
 export default function PostPreviews() {
   const [previews, setPreviews] = useState<PostPreviewResponse[]>();
 
@@ -33,18 +46,21 @@ export default function PostPreviews() {
   }
 
   return (
-      <main className={"preview_main"}>
-        <ul className={"preview_list"}>
+      <main>
+        <h2 className={classNames("text-2xl", "text-gray-500", "italic")}>Recent</h2>
+        <br/>
+        <ul className={"list-disc"}>
           {previews.map((post) => {
             return (
-                <li key={post.id} className={"preview_post"}>
-                  <p className={"preview_post_updated"}>
-                    {post.updatedAt}
-                  </p>
-                  <Link to={`/posts/${post.id}`}>
-                    <p className={"post_title"}>
+                <li key={post.id} className={"leading-loose"}>
+                  <Link to={`/posts/${post.id}`} className={classNames("text-blue-800", "font-medium", "hover:underline")}>
+                    <span>
+                      {formatDateWithIntl(post.updatedAt)}
+                    </span>
+                    {"  -   "}
+                    <span>
                       {post.title}
-                    </p>
+                    </span>
                   </Link>
                 </li>
             )

@@ -1,21 +1,15 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-// variable
-$point-color1: #606688;
-$point-color2: #404682;
-$point-color3: transparentize($point-color1, 0.1);
+// common
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
+//table
+$point-color1: #606688;
 $border-color: transparentize($point-color1, 0.5);
 $border-height: 0.8px;
-
-//common
-code {
-  font-size: 0.9em !important;
-}
-
-table {
-  text-align: center !important;
-}
 
 @mixin border-top-bottom {
   border-top: $border-height solid $border-color;
@@ -26,24 +20,8 @@ table {
   border-bottom: $border-height solid $border-color;
 }
 
-@mixin font-style {
-  font-family: 'Pretendard', -apple-system, 'Noto Sans KR', sans-serif;
-  color: #232129;
-}
-
-@mixin font-style-bold {
-  font-family: 'Pretendard-ExtraBold', -apple-system, 'Noto Sans KR', sans-serif;
-  font-weight: 800;
-}
-
-// common
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-body {
-  @include font-style;
+table {
+  text-align: center !important;
 }
 
 table,
@@ -57,192 +35,14 @@ iframe {
   display: none;
 }
 
+code {
+  font-size: 0.9em !important;
+}
 
 /*page*/
-@media (min-width: 768px) { // pc
-  .page_container {
-    display: flex;
-    flex-direction: column;
-    min-width: 768px;
-    max-width: 1024px;
-    margin: 0 auto;
-    min-height: 100vh;
-  }
-}
-
-@media (max-width: 768px) { // mobile
-  .page_container {
-    display: flex;
-    flex-direction: column;
-    padding: 5px 10px;
-    margin: 0 auto;
-    min-height: 100vh;
-  }
-}
-
-
-.page_footer {
+.page_container {
   display: flex;
-  justify-content: center;
-  margin-top: auto;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
 }
-
-/*previews*/
-.preview_header {
-  padding-top: 20px;
-  padding-bottom: 50px;
-  font-size: 3em;
-  font-weight: 600;
-}
-
-.preview_main {
-  display: flex;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  li {
-    list-style-type: none;
-    list-style: none;
-  }
-}
-
-@media (min-width: 768px) { // pc
-  .preview_main {
-    min-width: 1000px;
-  }
-
-  .preview_list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-  }
-
-  .preview_post {
-    padding-top: 35px;
-    padding-bottom: 52px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    p {
-      margin: 0;
-      padding: 0;
-    }
-  }
-
-  .preview_post:first-child { // 처음
-    @include border-top-bottom;
-  }
-
-  .preview_post + .preview_post { // 중간
-    @include border-bottom;
-  }
-
-  .preview_post:last-child { // 끝
-    @include border-bottom;
-  }
-
-  .post_title {
-    margin: 0;
-    font-size: 1.5em;
-    padding: 2px 2.5px;
-    color: $point-color2;
-    @include font-style-bold;
-  }
-}
-
-@media (max-width: 768px) { // mobile
-  .preview_main {
-    display: flex;
-    flex: 1;
-  }
-
-  .preview_list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-  }
-
-  .preview_post {
-    padding: 30px 0;
-  }
-
-  .preview_post:first-child { // 처음
-    @include border-top-bottom;
-  }
-
-  .preview_post + .preview_post { // 중간
-    @include border-bottom;
-  }
-
-  .preview_post:last-child { // 끝
-    @include border-bottom;
-  }
-
-  .post_title {
-    margin: 0;
-    font-size: 1.4em;
-    font-weight: 600;
-    color: $point-color2;
-    @include font-style-bold;
-  }
-}
-
-/*detail*/
-.detail_header_container {
-  display: flex;
-}
-
-.detail_header {
-  padding-top: 10px;
-  padding-bottom: 0;
-  font-size: 1.5em;
-  font-weight: 700;
-  margin: 0;
-  white-space: nowrap;
-  @include font-style-bold;
-}
-
-.preview_post_updated {
-  font-size: 1em;
-  font-weight: 500;
-  margin: 5px;
-  color: $point-color3;
-}
-
-.detail_header:hover {
-  color: $point-color2;
-  cursor: pointer;
-  transition: color .3s;
-}
-
-.detail_post_header_container {
-  width: 100%;
-  text-align: center;
-  margin: 0;
-  padding-top: 50px;
-  padding-bottom: 25px;
-}
-
-.detail_post_date {
-  font-size: 1em;
-  font-weight: 500;
-  margin: 5px;
-  color: $point-color3;
-}
-
-.detail_post_header {
-  margin-top: 0;
-  padding-bottom: 18px;
-  font-size: 2.4em;
-  font-weight: 600;
-  @include font-style-bold;
-  @include border-bottom;
-}
-

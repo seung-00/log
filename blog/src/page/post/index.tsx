@@ -1,17 +1,16 @@
 import React from "react";
 import PostPreviews from "../../component/post/preview/PostPreviews";
+import Layout from "../../component/core/Layout";
+import Header from "../../component/core/Header";
+import Footer from "../../component/core/Footer";
 
 export default function PostListPage() {
 
   return (
-      <div className={"page_container"}>
-        <header className={"preview_header font-mono"}>
-          Holden's Directory
-        </header>
+      <Layout>
+        <Header/>
         <PostPreviews/>
-        <footer className={"page_footer"}>
-          <p>seung-00@naver.com</p>
-        </footer>
-      </div>
+        <Footer/>
+      </Layout>
   )
 }
