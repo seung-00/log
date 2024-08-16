@@ -1,4 +1,8 @@
 cloud:
   files:
-    path:
-      /Users/seungyoungoh/Library/Mobile Documents/com~apple~CloudDocs/home/workspace/log/public
+    path: "/Users/seungyoungoh/Library/Mobile Documents/com~apple~CloudDocs/home/workspace/log/public"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
