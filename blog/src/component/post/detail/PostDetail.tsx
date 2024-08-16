@@ -41,10 +41,10 @@ export default function PostDetail({id}: Props) {
   return (
       <main>
         <div className={"py-5"}>
-          <h1 className={"font-sans text-4xl font-semibold py-1 text-gray-800"}>
+          <h1 className={"font-sans text-4xl font-semibold text-gray-800"}>
             <span>{post.title}</span>
           </h1>
-          <p className={"text-gray-500"}>
+          <p className={"text-gray-500 pt-1"}>
             {post.updatedAt}
           </p>
         </div>

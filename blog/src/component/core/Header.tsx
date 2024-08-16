@@ -10,8 +10,8 @@ export default function Header() {
   }
 
   return (
-      <header className={classNames("text-center", "py-2")}>
-        <a onClick={navigateToPosts} className={classNames("hover:underline", "cursor-pointer")}>
+      <header className={classNames("text-center", "py-3")}>
+        <a onClick={navigateToPosts} className={classNames("hover:underline", "cursor-pointer", "text-gray-900")}>
           <p className={classNames("text-xl")}>Holden's Directory</p>
         </a>
       </header>
