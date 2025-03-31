@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import PostDetail from "../../../component/post/detail/PostDetail";
 import Header from "../../../component/core/Header";
 import Footer from "../../../component/core/Footer";
 import TOC, {TOCItem} from "../../../component/post/detail/TOC";
-import Fitting from "../../../component/core/Fitting";
+import PageContainer from "../../../component/core/PageContainer";
 
 export default function PostDetailPage() {
   const location = useLocation();
@@ -15,32 +15,28 @@ export default function PostDetailPage() {
   const id = state?.id;
 
   return (
-      <>
-        <Header/>
-        <div className="flex justify-center">
-          <div className="hidden lg:block basis-1/5"/>
-
-          <Fitting>
-            {id && <PostDetail
-                id={id}
-                headings={headings}
-                onHeadingsExtracted={setHeadings} activeId={activeId}
-                onIntersectHeadings={setActiveId}
-            />
-            }
-          </Fitting>
-
-          <div className="
+      <div className="lg:flex justify-center">
+        <div className="hidden lg:block basis-1/5"/>
+        <PageContainer>
+          <Header/>
+          {id && <PostDetail
+              id={id}
+              headings={headings}
+              onHeadingsExtracted={setHeadings} activeId={activeId}
+              onIntersectHeadings={setActiveId}
+          />
+          }
+          <Footer/>
+        </PageContainer>
+        <div className="
           hidden lg:block
           sticky top-20 self-start
           basis-1/5
           ">
-            <div className="my-8 mr-auto">
-              <TOC items={headings} activeId={activeId}/>
-            </div>
+          <div className="my-8 mr-auto">
+            <TOC items={headings} activeId={activeId}/>
           </div>
         </div>
-        <Footer/>
-      </>
+      </div>
   )
 }

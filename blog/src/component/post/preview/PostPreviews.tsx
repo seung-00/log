@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {axiosInstance} from "../../../core/axios";
-import Fitting from "../../core/Fitting";
 
 interface PostPreviewResponse {
   id: string
@@ -50,14 +49,11 @@ export default function PostPreviews() {
 
   if (!previews) {
     return (
-        <Fitting>
           <span className="text-gray-500">loading...</span>
-        </Fitting>
     )
   }
 
   return (
-      <Fitting>
         <main>
           <h2 className="text-2xl text-gray-500 italic">Recent</h2>
           <br/>
@@ -82,6 +78,5 @@ export default function PostPreviews() {
             })}
           </ul>
         </main>
-      </Fitting>
   )
 }
