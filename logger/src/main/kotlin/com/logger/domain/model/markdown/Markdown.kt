@@ -51,7 +51,7 @@ data class Markdown(
     fun of(path: String): Markdown {
       val file = File(path)
 
-      require(isMarkdown(file)) {
+      require(file.isFile && isMarkdown(file)) {
         "Markdown 파일이 아닙니다. (path: $path)" // TODO: exception 개선
       }
 
@@ -65,7 +65,7 @@ data class Markdown(
     fun of(path: String, name: String): Markdown {
       val file = File("$path/$name.md")
 
-      require(isMarkdown(file)) {
+      require(file.isFile && isMarkdown(file)) {
         "Markdown 파일이 아닙니다. (path: $path)" // TODO: exception 개선
       }
 

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
-import java.io.FileNotFoundException
 import java.time.ZonedDateTime
 
 
@@ -65,7 +64,7 @@ class MarkdownTest{
 
   @Test
   fun `없는 위치인 경우`() {
-    val exception = assertThrows<FileNotFoundException> {
+    val exception = assertThrows<IllegalArgumentException> {
       Markdown.of("$postPath/none.md")
     }
   }
