@@ -1,8 +1,8 @@
 package com.logger.application.post
 
-import com.logger.model.markdown.MarkdownRepository
-import com.logger.model.post.Post
-import com.logger.model.post.PostPreviews
+import com.logger.domain.model.markdown.MarkdownRepository
+import com.logger.domain.model.post.Post
+import com.logger.domain.model.post.PostPreview
 import org.springframework.stereotype.Service
 
 @Service
@@ -15,9 +15,10 @@ class PostService(
     return Post.from(markdown)
   }
 
-  fun getPostPreviews(): PostPreviews {
+  fun getPostPreviews(): List<PostPreview> {
     val markdowns = markdownRepository.retrieveAllMarkdowns()
 
-    return PostPreviews.from(markdowns)
+    return markdowns.map { PostPreview.from(it) }
+      .sortedByDescending { it.createdAt }
   }
 }

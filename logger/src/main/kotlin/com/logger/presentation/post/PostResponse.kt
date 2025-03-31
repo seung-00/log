@@ -1,6 +1,6 @@
 package com.logger.presentation.post
 
-import com.logger.model.post.Post
+import com.logger.domain.model.post.Post
 import org.springframework.format.annotation.DateTimeFormat
 import java.time.ZonedDateTime
 

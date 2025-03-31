@@ -1,7 +1,7 @@
 package com.logger.application.image
 
-import com.logger.model.image.Image
-import com.logger.model.image.ImageRepository
+import com.logger.domain.model.image.Image
+import com.logger.domain.model.image.ImageRepository
 import org.springframework.stereotype.Service
 
 @Service

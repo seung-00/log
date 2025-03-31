@@ -1,4 +1,4 @@
-package com.logger.model.markdown
+package com.logger.domain.model.markdown
 
 import java.io.File
 import java.nio.file.Files

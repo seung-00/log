@@ -1,6 +1,5 @@
-package com.logger.post.domain.markdown
+package com.logger.domain.model.markdown
 
-import com.logger.model.markdown.Markdown
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -45,6 +44,14 @@ class MarkdownTest{
 
     assertThat(sut.updatedAt).isNotNull()
     assertThat(sut.updatedAt).isInstanceOf(ZonedDateTime::class.java)
+  }
+
+  @Test
+  fun `마크다운 createdAt 파싱`() {
+    println(sut.createdAt)
+
+    assertThat(sut.createdAt).isNotNull()
+    assertThat(sut.createdAt).isInstanceOf(ZonedDateTime::class.java)
   }
 
   @Test

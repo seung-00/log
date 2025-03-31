@@ -1,6 +1,6 @@
-package com.logger.model.post
+package com.logger.domain.model.post
 
-import com.logger.model.markdown.Markdown
+import com.logger.domain.model.markdown.Markdown
 import java.time.ZonedDateTime
 
 class Post(
@@ -12,7 +12,6 @@ class Post(
   companion object {
     private fun exceptTitleFromContent(content: String, title: String): String =
       content.replaceFirst(title, "")
-
 
     fun from(markdown: Markdown): Post {
       return Post(
