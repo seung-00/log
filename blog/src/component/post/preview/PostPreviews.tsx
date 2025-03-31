@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {axiosInstance} from "../../../common/axios";
-import classNames from "classnames";
+import {axiosInstance} from "../../../core/axios";
+import Fitting from "../../core/Fitting";
 
 interface PostPreviewResponse {
-  id: number
+  id: string
   title: string
   createdAt: string
 }
@@ -30,6 +30,13 @@ const formatDateWithIntl = (dateString: string) => {
   return formatter.format(date);
 }
 
+const generateSlug = (title: string) => {
+  return title
+  .trim()
+  .replace(/\s+/g, "-")
+  .replace(/[^\w가-힣\-]/g, "")
+  .toLowerCase();
+}
 
 export default function PostPreviews() {
   const [previews, setPreviews] = useState<PostPreviewResponse[]>();
@@ -42,30 +49,39 @@ export default function PostPreviews() {
   }, []);
 
   if (!previews) {
-    return <div>loading...</div>
+    return (
+        <Fitting>
+          <span className="text-gray-500">loading...</span>
+        </Fitting>
+    )
   }
 
   return (
-      <main>
-        <h2 className={classNames("text-2xl", "text-gray-500", "italic")}>Recent</h2>
-        <br/>
-        <ul className={"list-disc"}>
-          {previews.map((post) => {
-            return (
-                <li key={post.id} className={"leading-loose"}>
-                  <Link to={`/posts/${post.id}`} className={classNames("text-blue-800", "font-medium", "hover:underline")}>
+      <Fitting>
+        <main>
+          <h2 className="text-2xl text-gray-500 italic">Recent</h2>
+          <br/>
+          <ul className={"list-disc"}>
+            {previews.map((post) => {
+              return (
+                  <li key={post.id} className={"leading-loose"}>
+                    <Link to={`/posts/${generateSlug(post.title)}`}
+                          state={{id: post.id}}
+                          className="text-blue-800 font-medium hover:underline"
+                    >
                     <span>
                       {formatDateWithIntl(post.createdAt)}
                     </span>
-                    {"  -   "}
-                    <span>
+                      {"  -   "}
+                      <span>
                       {post.title}
                     </span>
-                  </Link>
-                </li>
-            )
-          })}
-        </ul>
-      </main>
+                    </Link>
+                  </li>
+              )
+            })}
+          </ul>
+        </main>
+      </Fitting>
   )
 }

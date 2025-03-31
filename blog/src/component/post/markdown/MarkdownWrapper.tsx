@@ -5,11 +5,9 @@ import Img from "./Img";
 import CodeBlock from "./CodeBlock";
 import Pre from "./Pre";
 import React from "react";
-import {IMAGE_BASE_URL} from "../../../common/constant";
-
-type Props = {
-  content: string;
-};
+import {IMAGE_BASE_URL} from "../../../core/constant";
+import useTOC from "../../../core/hooks/useTOC";
+import useIsDesktop from "../../../core/hooks/useIsDesktop";
 
 const getPath = (uri: string) => {
   const pattern = /images\/(.+\.png)/;
@@ -17,7 +15,6 @@ const getPath = (uri: string) => {
 
   return match ? `${match[1]}` : null;
 }
-
 
 const transformImageUri = (uri: string) => {
   if (!uri.startsWith("http") && uri.includes('.png')) {
@@ -27,8 +24,17 @@ const transformImageUri = (uri: string) => {
   return uri
 }
 
+type Props = {
+  content: string;
+  onHeadingsExtracted: (headings: { id: string, text: string, level: number }[]) => void | null;
+  onIntersectHeadings: (id: string) => void | null;
+};
 
-export default function MarkdownWrapper({content}: Props) {
+export default function MarkdownWrapper({content, onHeadingsExtracted, onIntersectHeadings}: Props) {
+  const isDesktop = useIsDesktop()
+  const contentContainerRef = useTOC(
+      content, onHeadingsExtracted, onIntersectHeadings, isDesktop
+  )
 
   return (
       <article className="
@@ -50,7 +56,8 @@ export default function MarkdownWrapper({content}: Props) {
         prose-a:text-blue-700
         prose-a:no-underline
         hover:prose-a:underline
-        ">
+        " ref={contentContainerRef}
+      >
         <Markdown
             // @ts-ignore
             // https://github.com/remarkjs/react-markdown/issues/680

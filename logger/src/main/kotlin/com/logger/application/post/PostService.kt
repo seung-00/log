@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service
 class PostService(
   private val markdownRepository: MarkdownRepository,
 ) {
-  fun getPost(name: String): Post {
-    val markdown = markdownRepository.retrieveMarkdown(name)
+  fun getPost(id: String): Post {
+    val markdown = markdownRepository.retrieveMarkdown(id)
 
     return Post.from(markdown)
   }

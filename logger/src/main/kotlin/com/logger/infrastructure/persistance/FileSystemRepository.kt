@@ -4,6 +4,7 @@ import com.logger.domain.model.image.Image
 import com.logger.domain.model.image.ImageRepository
 import com.logger.domain.model.markdown.Markdown
 import com.logger.domain.model.markdown.MarkdownRepository
+import com.logger.domain.service.IdentifierService
 import com.logger.domain.service.MarkdownService
 import org.springframework.stereotype.Repository
 
@@ -19,7 +20,9 @@ internal class FileSystemRepository(
     return Image(url)
   }
 
-  override fun retrieveMarkdown(name: String): Markdown {
+  override fun retrieveMarkdown(id: String): Markdown {
+    val name = IdentifierService.decodeIdentifier(id)
+
     return Markdown.of(fileProperties.path, name)
   }
 

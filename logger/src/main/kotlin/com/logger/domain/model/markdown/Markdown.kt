@@ -7,8 +7,8 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
+// TODO: File 에 종속적이므로 로직을 domain service 로 옮기고 Post 만 남길 것
 data class Markdown(
-  val id: String,
   val path: String,
   val source: File,
 ) {
@@ -56,7 +56,6 @@ data class Markdown(
       }
 
       return Markdown(
-        id = file.nameWithoutExtension,
         path = path,
         source = file,
       )
@@ -70,7 +69,6 @@ data class Markdown(
       }
 
       return Markdown(
-        id = file.nameWithoutExtension,
         path = path,
         source = file,
       )

@@ -1,6 +1,7 @@
 package com.logger.domain.model.post
 
 import com.logger.domain.model.markdown.Markdown
+import com.logger.domain.service.IdentifierService
 import java.time.ZonedDateTime
 
 class Post(
@@ -19,7 +20,7 @@ class Post(
       val title = markdown.parseTitle()
 
       return Post(
-        id = markdown.id,
+        id = IdentifierService.encodeIdentifier(markdown.source.nameWithoutExtension),
         title = title,
         content = exceptTitleFromContent(markdown.parseText(), title),
         createdAt = markdown.parseCreatedAt(),

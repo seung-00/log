@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {axiosInstance} from "../../../common/axios";
+import {axiosInstance} from "../../../core/axios";
 import MarkdownWrapper from "../markdown/MarkdownWrapper";
+import TOC, {TOCItem} from "./TOC";
 
 interface PostResponse {
   id: number
@@ -22,9 +23,13 @@ const fetchPost = async (id: string) => {
 
 type Props = {
   id: string;
+  headings: TOCItem[]
+  onHeadingsExtracted: (headings: { id: string, text: string, level: number }[]) => void | null;
+  activeId: string | null;
+  onIntersectHeadings: (id: string) => void | null;
 }
 
-export default function PostDetail({id}: Props) {
+export default function PostDetail({id, headings, onHeadingsExtracted, activeId, onIntersectHeadings}: Props) {
   const [post, setPost] = useState<PostResponse>();
 
   useEffect(() => {
@@ -49,7 +54,11 @@ export default function PostDetail({id}: Props) {
           </p>
         </div>
         <hr/>
-        <MarkdownWrapper content={post.content}/>
+        <br/>
+        <div className="lg:hidden block mb-4">
+          <TOC items={headings} activeId={activeId}/>
+        </div>
+        <MarkdownWrapper content={post.content} onHeadingsExtracted={onHeadingsExtracted} onIntersectHeadings={onIntersectHeadings} />
       </main>
   )
 }
