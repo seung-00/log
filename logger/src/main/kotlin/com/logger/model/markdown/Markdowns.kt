@@ -16,6 +16,7 @@ data class Markdowns(
       val markdowns = postDirectories
         .filter { Markdown.isMarkdown(it) }
         .map { Markdown.of(it.path) }
+        .sortedBy { it.updatedAt }
 
       return Markdowns(markdowns)
     }

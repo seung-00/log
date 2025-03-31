@@ -1,7 +1,7 @@
-package com.logger.infrastructure.file
+package com.logger.infrastructure.persistance
 
-import com.logger.application.image.ImageRepository
-import com.logger.application.markdown.MarkdownRepository
+import com.logger.model.image.ImageRepository
+import com.logger.model.markdown.MarkdownRepository
 import com.logger.model.image.Image
 import com.logger.model.markdown.Markdown
 import com.logger.model.markdown.Markdowns

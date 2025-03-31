@@ -1,4 +1,4 @@
-package com.logger.infrastructure.file
+package com.logger.infrastructure.persistance
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 
