@@ -6,8 +6,8 @@ data class PostPreviews(
   val postPreviews: List<PostPreview>,
 ) {
 
-  fun toSortedListByUpdatedAt(): List<PostPreview> {
-    return postPreviews.sortedByDescending { it.updatedAt }
+  fun toSortedListByCreatedAt(): List<PostPreview> {
+    return postPreviews.sortedByDescending { it.createdAt }
   }
 
   companion object {

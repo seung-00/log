@@ -6,7 +6,7 @@ import classNames from "classnames";
 interface PostPreviewResponse {
   id: number
   title: string
-  updatedAt: string
+  createdAt: string
 }
 
 interface ApiResponse<T> {
@@ -55,7 +55,7 @@ export default function PostPreviews() {
                 <li key={post.id} className={"leading-loose"}>
                   <Link to={`/posts/${post.id}`} className={classNames("text-blue-800", "font-medium", "hover:underline")}>
                     <span>
-                      {formatDateWithIntl(post.updatedAt)}
+                      {formatDateWithIntl(post.createdAt)}
                     </span>
                     {"  -   "}
                     <span>

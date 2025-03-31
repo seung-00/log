@@ -6,14 +6,14 @@ import java.time.ZonedDateTime
 data class PostPreview(
   val id: String,
   val title: String,
-  val updatedAt: ZonedDateTime
+  val createdAt: ZonedDateTime
 ) {
   companion object {
     fun from(markdown: Markdown): PostPreview {
       return PostPreview(
         id = markdown.id,
         title = markdown.title,
-        updatedAt = markdown.updatedAt,
+        createdAt = markdown.createdAt,
       )
     }
   }

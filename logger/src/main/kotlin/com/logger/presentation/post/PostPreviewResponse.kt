@@ -8,14 +8,14 @@ internal data class PostPreviewResponse(
   val id: String,
   val title: String,
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  val updatedAt: ZonedDateTime,
+  val createdAt: ZonedDateTime,
 ) {
   companion object {
     fun from(postPreview: PostPreview): PostPreviewResponse {
       return PostPreviewResponse(
         id = postPreview.id,
         title = postPreview.title,
-        updatedAt = postPreview.updatedAt,
+        createdAt = postPreview.createdAt,
       )
     }
   }

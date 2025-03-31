@@ -26,7 +26,7 @@ internal class PostController(
     val result = postService.getPostPreviews()
 
     return ApiResponse.ok(
-      result.toSortedListByUpdatedAt().map {
+      result.toSortedListByCreatedAt().map {
         PostPreviewResponse.from(it)
       }
     )
