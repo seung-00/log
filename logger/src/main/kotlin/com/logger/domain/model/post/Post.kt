@@ -7,18 +7,23 @@ class Post(
   val id: String,
   val title: String,
   val content: String,
+  val createdAt: ZonedDateTime,
   val updatedAt: ZonedDateTime,
+  val tags: List<String> = emptyList(),
 ) {
   companion object {
     private fun exceptTitleFromContent(content: String, title: String): String =
       content.replaceFirst(title, "")
 
     fun from(markdown: Markdown): Post {
+      val title = markdown.parseTitle()
+
       return Post(
         id = markdown.id,
-        title = markdown.title,
-        content = exceptTitleFromContent(markdown.content, markdown.title),
-        updatedAt = markdown.updatedAt
+        title = title,
+        content = exceptTitleFromContent(markdown.parseText(), title),
+        createdAt = markdown.parseCreatedAt(),
+        updatedAt = markdown.parseUpdatedAt()
       )
     }
   }

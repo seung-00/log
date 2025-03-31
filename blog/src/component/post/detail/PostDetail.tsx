@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {axiosInstance} from "../../../common/axios";
-import classNames from "classnames";
 import MarkdownWrapper from "../markdown/MarkdownWrapper";
 
 interface PostResponse {
   id: number
   title: string
   content: string
-  updatedAt: string
+  createdAt: string
+  updatedAt: String
 }
 
 interface ApiResponse<T> {
@@ -45,7 +45,7 @@ export default function PostDetail({id}: Props) {
             <span>{post.title}</span>
           </h1>
           <p className={"text-gray-500 pt-1"}>
-            {post.updatedAt}
+            {post.createdAt}
           </p>
         </div>
         <hr/>

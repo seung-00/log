@@ -10,6 +10,8 @@ internal data class PostResponse(
   val content: String,
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   val updatedAt: ZonedDateTime,
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  val createdAt: ZonedDateTime,
 ) {
   companion object {
     fun from(post: Post): PostResponse {
@@ -18,6 +20,7 @@ internal data class PostResponse(
         content = post.content,
         title = post.title,
         updatedAt = post.updatedAt,
+        createdAt = post.createdAt,
       )
     }
   }

@@ -23,35 +23,35 @@ class MarkdownTest{
 
   @Test
   fun `path 로 마크다운 생성`() {
-    assertThat(sut.content).isNotBlank()
+    assertThat(sut.parseText()).isNotBlank()
   }
 
   @Test
   fun `path 와 name 으로 마크다운 생성`() {
     val sut = Markdown.of("$postPath", "test")
 
-    assertThat(sut.content).isNotBlank()
+    assertThat(sut.parseText()).isNotBlank()
   }
 
   @Test
   fun `마크다운 title 파싱`() {
-    assertThat(sut.title).isEqualTo("Title")
+    assertThat(sut.parseTitle()).isEqualTo("Title")
   }
 
   @Test
   fun `마크다운 updatedAt 파싱`() {
-    println(sut.updatedAt)
+    val updatedAt = sut.parseUpdatedAt()
 
-    assertThat(sut.updatedAt).isNotNull()
-    assertThat(sut.updatedAt).isInstanceOf(ZonedDateTime::class.java)
+    assertThat(updatedAt).isNotNull()
+    assertThat(updatedAt).isInstanceOf(ZonedDateTime::class.java)
   }
 
   @Test
   fun `마크다운 createdAt 파싱`() {
-    println(sut.createdAt)
+    val createdAt = sut.parseCreatedAt()
 
-    assertThat(sut.createdAt).isNotNull()
-    assertThat(sut.createdAt).isInstanceOf(ZonedDateTime::class.java)
+    assertThat(createdAt).isNotNull()
+    assertThat(createdAt).isInstanceOf(ZonedDateTime::class.java)
   }
 
   @Test

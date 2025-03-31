@@ -12,8 +12,8 @@ data class PostPreview(
     fun from(markdown: Markdown): PostPreview {
       return PostPreview(
         id = markdown.id,
-        title = markdown.title,
-        createdAt = markdown.createdAt,
+        title = markdown.parseTitle(),
+        createdAt = markdown.parseCreatedAt(),
       )
     }
   }
