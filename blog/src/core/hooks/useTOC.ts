@@ -24,7 +24,6 @@ export default function useTOC(
 
     const extracted = headings.map((element) => {
       const text = element.textContent || "";
-      // const id = text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w\-]+/g, "");
       const level = parseInt(element.tagName[1], 10);
 
       element.id = text;

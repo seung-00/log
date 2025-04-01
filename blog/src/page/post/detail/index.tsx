@@ -16,7 +16,9 @@ export default function PostDetailPage() {
 
   return (
       <div className="lg:flex justify-center">
+        {/* desktop 용 좌측 공백 */}
         <div className="hidden lg:block basis-1/5"/>
+
         <PageContainer>
           <Header/>
           {id && <PostDetail
@@ -28,6 +30,8 @@ export default function PostDetailPage() {
           }
           <Footer/>
         </PageContainer>
+
+        {/* desktop 용 우측 TOC */}
         <div className="
           hidden lg:block
           sticky top-20 self-start
