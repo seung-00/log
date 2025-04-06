@@ -1,7 +1,9 @@
-package com.logger.presentation.post
+package com.logger.interfaces.post
 
+import com.logger.domain.model.SEOUL_ZONE_ID
 import com.logger.domain.model.post.Post
 import org.springframework.format.annotation.DateTimeFormat
+import java.time.Instant
 import java.time.ZonedDateTime
 
 internal data class PostResponse(
@@ -19,8 +21,8 @@ internal data class PostResponse(
         id = post.id,
         content = post.content,
         title = post.title,
-        updatedAt = post.updatedAt,
-        createdAt = post.createdAt,
+        updatedAt = ZonedDateTime.ofInstant(Instant.ofEpochMilli(post.updatedAt), SEOUL_ZONE_ID),
+        createdAt = ZonedDateTime.ofInstant(Instant.ofEpochMilli(post.createdAt), SEOUL_ZONE_ID)
       )
     }
   }

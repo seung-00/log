@@ -1,4 +1,4 @@
-package com.logger.presentation.image
+package com.logger.interfaces.image
 
 import com.logger.application.image.ImageService
 import org.slf4j.Logger

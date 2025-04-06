@@ -3,9 +3,6 @@ package com.logger.domain.model.markdown
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.attribute.BasicFileAttributes
-import java.time.Instant
-import java.time.ZoneId
-import java.time.ZonedDateTime
 
 // TODO: File 에 종속적이므로 로직을 domain service 로 옮기고 Post 만 남길 것
 data class Markdown(
@@ -25,22 +22,18 @@ data class Markdown(
     return firstH1 ?: source.nameWithoutExtension
   }
 
-  fun parseCreatedAt(): ZonedDateTime {
+  fun parseCreatedAt(): Long {
     return try {
       val path = source.toPath()
       val attr: BasicFileAttributes = Files.readAttributes(path, BasicFileAttributes::class.java)
-      val createdMillis = attr.creationTime().toMillis()
-
-      ZonedDateTime.ofInstant(Instant.ofEpochMilli(createdMillis), ZoneId.systemDefault())
+      return attr.creationTime().toMillis()
     } catch (e: Exception) {
       parseUpdatedAt()
     }
   }
 
-  fun parseUpdatedAt(): ZonedDateTime {
-    val lastUpdated = source.lastModified()
-
-    return ZonedDateTime.ofInstant(Instant.ofEpochMilli(lastUpdated), ZoneId.systemDefault())
+  fun parseUpdatedAt(): Long {
+    return source.lastModified()
   }
 
   companion object {

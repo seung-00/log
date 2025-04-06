@@ -1,4 +1,4 @@
-package com.logger.presentation.common
+package com.logger.interfaces
 
 enum class ApiResponseCode(
   val status: Int,

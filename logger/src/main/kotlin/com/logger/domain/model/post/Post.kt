@@ -2,14 +2,16 @@ package com.logger.domain.model.post
 
 import com.logger.domain.model.markdown.Markdown
 import com.logger.domain.service.IdentifierService
+import kotlinx.serialization.Serializable
 import java.time.ZonedDateTime
 
+@Serializable
 class Post(
   val id: String,
   val title: String,
   val content: String,
-  val createdAt: ZonedDateTime,
-  val updatedAt: ZonedDateTime,
+  val createdAt: Long,
+  val updatedAt: Long,
   val tags: List<String> = emptyList(),
 ) {
   companion object {

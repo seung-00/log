@@ -1,7 +1,7 @@
-package com.logger.presentation.post
+package com.logger.interfaces.post
 
 import com.logger.application.post.PostService
-import com.logger.presentation.common.ApiResponse
+import com.logger.interfaces.ApiResponse
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

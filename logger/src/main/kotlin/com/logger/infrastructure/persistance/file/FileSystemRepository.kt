@@ -1,5 +1,6 @@
-package com.logger.infrastructure.persistance
+package com.logger.infrastructure.persistance.file
 
+import com.logger.config.FilesProperties
 import com.logger.domain.model.image.Image
 import com.logger.domain.model.image.ImageRepository
 import com.logger.domain.model.markdown.Markdown

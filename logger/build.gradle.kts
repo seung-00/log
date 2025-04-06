@@ -1,10 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.2.1"
-	id("io.spring.dependency-management") version "1.1.4"
-	kotlin("jvm") version "1.9.21"
-	kotlin("plugin.spring") version "1.9.21"
+	alias(libs.plugins.spring.boot)
+	alias(libs.plugins.spring.dep.mgmt)
+	alias(libs.plugins.kotlin.jvm)
+	alias(libs.plugins.kotlin.spring)
+	alias(libs.plugins.kotlin.serialization)
 }
 
 group = "com"
@@ -19,11 +20,42 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.springframework.boot:spring-boot-starter-web:3.1.2")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation(libs.spring.boot.starter)
+	implementation(libs.spring.boot.starter.web)
+	implementation(libs.spring.boot.actuator)
+	implementation(libs.kotlin.reflect)
+	implementation(libs.kotlinx.serialization.json)
+	implementation(libs.caffeine)
+
+	testImplementation(libs.spring.boot.starter.test)
+}
+
+/**
+ * integration 테스트 sourceSet
+ */
+sourceSets.create("intTest") {
+	compileClasspath += sourceSets.main.get().output
+	compileClasspath += configurations.testRuntimeClasspath.get()
+	runtimeClasspath += output + compileClasspath
+}
+
+configurations.named("intTestImplementation") {
+	extendsFrom(configurations.getByName("testImplementation"))
+}
+
+tasks.register<Test>("intTest") {
+	description = "Runs integration test"
+	group = "verification"
+
+	testClassesDirs = sourceSets["intTest"].output.classesDirs
+	classpath = sourceSets["intTest"].runtimeClasspath
+	shouldRunAfter("test")
+
+	useJUnitPlatform()
+
+	testLogging {
+		events("passed")
+	}
 }
 
 tasks.withType<KotlinCompile> {

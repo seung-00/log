@@ -1,3 +1,0 @@
-test:
-  post:
-    path: src/test/resources/post

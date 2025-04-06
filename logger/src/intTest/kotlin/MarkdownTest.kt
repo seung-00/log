@@ -1,22 +1,15 @@
-package com.logger.domain.model.markdown
-
+import com.logger.domain.model.markdown.Markdown
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
 import java.time.ZonedDateTime
 
 
-@SpringBootTest
-@ActiveProfiles("local", "test")
 class MarkdownTest{
 
-  @Value("\${test.post.path}")
-  lateinit var postPath: String
+  private var postPath: String = "src/test/resources/post"
 
-  val sut: Markdown by lazy {
+  private val sut: Markdown by lazy {
     Markdown.of("$postPath/test.md")
   }
 
